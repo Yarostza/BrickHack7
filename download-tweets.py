@@ -1,16 +1,11 @@
-import GetOldTweets3 as got
-import datetime
+#pip3 install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint
+import twint
 
-user = "BarackObama"
-currentDate = datetime.date.today()
+c = twint.Config()
 
-startDate = str(currentDate - datetime.timedelta(days=365))
-endDate = str(currentDate)
+c.Username = "barackobama"
+c.Limit = 10
+c.Store_csv = False
+c.Output = "none"
 
-userTweets = got.manager.TweetCriteria().setUsername(user).setSince(startDate).\
-    setUntil(endDate).setMaxTweets(10).setEmoji("unicode")
-
-tweetList = got.manager.TweetManager.getTweets(userTweets)
-
-print(tweetList)
-#since 2015-09-10 --until 2015-09-12
+twint.run.Search(c)
