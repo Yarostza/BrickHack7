@@ -1,10 +1,7 @@
 import twint
 import os
-import re
 import preprocessor as p
 import textblob as tb
-
-fileName = "tweets.json"
 
 while True:
     print("--------------------------------")
@@ -16,9 +13,6 @@ while True:
         print("Calculating...")
 
     try:
-        if os.path.exists(fileName):
-            os.remove(fileName)
-
         tweets = []
         config = twint.Config()
         config.Username = username
