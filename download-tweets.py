@@ -1,5 +1,4 @@
 import twint
-import os
 import preprocessor as p
 import textblob as tb
 
