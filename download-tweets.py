@@ -7,16 +7,18 @@ while True:
     print("--------------------------------")
     print("Who would you like to examine? Type q to quit")
     username = input()
+    print("\n")
     if username == "q":
         break
     else:
         print("Calculating...")
+        print("\n")
 
     try:
         tweets = []
         config = twint.Config()
         config.Username = username
-        config.Limit = 10
+        config.Limit = 1000
         config.Hide_output = True
         config.Store_object = True
         config.Store_object_tweets_list = tweets
@@ -40,6 +42,7 @@ while True:
             for tweet in tweetsCleaned:
                 totalPolarity += getPolarity(tweet)
                 totalSubjectivity += getSubjectivity(tweet)
+            print("Tweets Analyzed: ", len(tweetsCleaned))
             totalPolarity /= len(tweetsCleaned)
             totalSubjectivity /= len(tweetsCleaned)
             print("Polarity (-1, 1): ", totalPolarity)
